@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Mock Flight Search</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    .flight-row { padding: 10px; border: 1px solid #ccc; margin: 8px 0; cursor: pointer;}
+    .airline { font-weight: bold; }
+    .price { float: right; color: green; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h1>Flights</h1>
+  <label>Source: <input id="source" type="text" value=""></label><br/><br/>
+  <label>Destination: <input id="destination" type="text" value=""></label><br/><br/>
+  <label>Date: <input id="date" type="date" value=""></label><br/><br/>
+  <button id="searchBtn">Search</button>
+
+  <h2>Results</h2>
+  <div id="results"></div>
+
+  <script>
+    const sampleFlights = [
+      { airline: 'AirAlpha', price: 250 },
+      { airline: 'BetaAir', price: 180 },
+      { airline: 'GammaFlights', price: 300 },
+      { airline: 'Delta Wings', price: 200 },
+      { airline: 'Epsilon Air', price: 220 }
+    ];
+
+    function renderResults(list){
+      const container = document.getElementById('results');
+      container.innerHTML = '';
+      list.forEach(f => {
+        const row = document.createElement('div');
+        row.className = 'flight-row';
+        row.innerHTML = '<span class="airline">' + f.airline + '</span><span class="price">$' + f.price + '</span>';
+        row.onclick = () => alert('Selected: ' + f.airline + ' for $' + f.price);
+        container.appendChild(row);
+      });
+    }
+
+    document.getElementById('searchBtn').addEventListener('click', () => {
+      // For demo: shuffle sample flights and show them
+      const shuffled = sampleFlights.sort(() => 0.5 - Math.random());
+      renderResults(shuffled);
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,8 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="TravelAutomationSuite">
+  <test name="FlightSearchTests">
+    <classes>
+      <class name="com.demo.tests.FlightSearchTest"/>
+    </classes>
+  </test>
+</suite>
